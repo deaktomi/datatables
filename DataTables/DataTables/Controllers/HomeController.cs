@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DataTables.Models;
+using DataTables.Models.Repository;
 
 namespace DataTables.Controllers
 {
@@ -13,18 +15,21 @@ namespace DataTables.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult AjaxHandler(JQueryDataTableParamModel param)
         {
-            ViewBag.Message = "Your application description page.";
+            var allCompanies = DataRepository.GetCompanies();
 
-            return View();
-        }
+            var result = from c in allCompanies
+                select new[] { c.Name, c.Address, c.Town };
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return Json(new
+                {
+                    sEcho = param.sEcho,
+                    iTotalRecords = allCompanies.Count(),
+                    iTotalDisplayRecords = allCompanies.Count(),
+                    aaData = result
+                },
+                JsonRequestBehavior.AllowGet);
         }
     }
 }
