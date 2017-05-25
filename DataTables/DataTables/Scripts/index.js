@@ -2,7 +2,7 @@
 
     $('#myDataTable').dataTable({
         "bServerSide": true,
-        "sAjaxSource": "AjaxHandler",
+        "sAjaxSource": "Home/AjaxHandler",
         "bProcessing": true,
         "aoColumns": [
             {

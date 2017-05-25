@@ -1,5 +1,7 @@
 ﻿
 
+using System;
+
 namespace DataTables.Models
 {
     /// <summary>
@@ -17,6 +19,7 @@ namespace DataTables.Models
         public string Name { get; set; }
         public string Address { get; set; }
         public string Town { get; set; }
+        public DateTime DateCreated { get; set; }
     }
 
 }
