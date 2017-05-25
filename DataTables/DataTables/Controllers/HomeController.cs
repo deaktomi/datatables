@@ -20,7 +20,7 @@ namespace DataTables.Controllers
             var allCompanies = DataRepository.GetCompanies();
 
             var result = from c in allCompanies
-                select new[] { c.Name, c.Address, c.Town };
+                select new[] { c.ID.ToString(), c.Name, c.Address, c.Town };
 
             return Json(new
                 {
