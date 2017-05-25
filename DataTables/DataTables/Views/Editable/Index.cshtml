@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "~/Views/Editable/JQueryDataTableEditableLayout.cshtml";
+}
+
+@section head{
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function () {
+            $('#myDataTable').dataTable().makeEditable();
+        });
+    </script>
+}
+
+<div id="demo">
+    <h1>Basic Example</h1>
+    <table id="myDataTable" class="display">
+        <thead>
+        <tr>
+            <th>Company name</th>
+            <th>Address</th>
+            <th>Town</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr id="@item.ID">
+                <td>@item.Name</td>
+                <td>@item.Address</td>
+                <td>@item.Town</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    <div class="add_delete_toolbar" />
+</div>
